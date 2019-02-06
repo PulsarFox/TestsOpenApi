@@ -5,27 +5,6 @@ const apiDoc = {
       title: 'A getting started API.',
       version: '1.0.0'
     },
-    definitions: {
-      User: {
-        type: 'object',
-        description:"A Semantic User",
-        properties: {
-          name: {
-            description: 'User name',
-            type: 'string'
-          },
-          lastName: {
-            description: 'Last name of the user',
-            type: 'string'
-          },
-          id: {
-            description: 'User id',
-            type: 'number'
-          }
-        },
-        required: ['name']
-      }
-    },
     paths: {}
   };
    

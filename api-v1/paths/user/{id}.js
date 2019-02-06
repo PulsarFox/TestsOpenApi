@@ -1,20 +1,19 @@
 module.exports = function(userService) {
+
   let operations = {
     GET,
-    parameters
+    parameters: [
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        type: 'number'
+      }
+    ],
   };
 
-  let parameters = [    
-  {
-    in: 'path',
-    name: 'id',
-    required: true,
-    type: 'integer'
-  }
-];
-  
   function GET(req, res, next) {
-    res.status(200).json(userService.userById(req.path.id));
+    res.status(200).json(userService.userById(req.params.id));
   }
   
   // NOTE: We could also use a YAML string here.
@@ -23,13 +22,7 @@ module.exports = function(userService) {
     operationId: 'userById',
     responses: {
       200: {
-        description: 'User matching id',
-        schema: {
-          type: 'array',
-          items: {
-            $ref: '#/definitions/User'
-          }
-        }
+        description: 'User matching id'
       },
       default: {
         description: 'An error occurred',

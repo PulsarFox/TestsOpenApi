@@ -4,36 +4,42 @@ module.exports = function(userService) {
     };
     
     function POST(req, res, next) {
-      res.status(200).json(userService.createUser(req.query));
+      res.status(200).json(userService.editUser(req.query));
     }
     
     // NOTE: We could also use a YAML string here.
     POST.apiDoc = {
-      summary: 'Creates a Semapps User.',
-      operationId: 'createUser',
+      summary: 'edit a Semapps User.',
+      operationId: 'editUser',
       parameters: [
         {
             in: 'query',
             name: 'username',
-            required: true,
+            required: false,
             type: 'string'
         },
         {
             in: 'query',
             name: 'email',
-            required: true,
+            required: false,
             type: 'string'
         },
         {
             in: 'query',
             name: 'password',
+            required: false,
+            type: 'string'
+        },
+        {
+            in: 'query',
+            name: 'id',
             required: true,
             type: 'string'
         },
       ],
       responses: {
         200: {
-          description: 'New User Created'
+          description: 'User successfully edited'
         },
         default: {
           description: 'An error occurred',

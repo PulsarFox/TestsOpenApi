@@ -21,13 +21,7 @@ module.exports = function(userService) {
     ],
     responses: {
       200: {
-        description: 'User matching name',
-        schema: {
-          type: 'array',
-          items: {
-            $ref: '#/definitions/User'
-          }
-        }
+        description: 'User matching name'
       },
       default: {
         description: 'An error occurred',
