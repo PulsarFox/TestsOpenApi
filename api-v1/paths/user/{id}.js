@@ -1,27 +1,29 @@
 module.exports = function(userService) {
   let operations = {
-    GET
+    GET,
+    parameters
   };
+
+  let parameters = [    
+  {
+    in: 'path',
+    name: 'id',
+    required: true,
+    type: 'integer'
+  }
+];
   
   function GET(req, res, next) {
-    res.status(200).json(userService.userByName(req.query.username));
+    res.status(200).json(userService.userById(req.path.id));
   }
   
   // NOTE: We could also use a YAML string here.
   GET.apiDoc = {
     summary: 'Returns a Semapps User.',
-    operationId: 'userByName',
-    parameters: [
-      {
-        in: 'query',
-        name: 'username',
-        required: true,
-        type: 'string'
-      }
-    ],
+    operationId: 'userById',
     responses: {
       200: {
-        description: 'User matching name',
+        description: 'User matching id',
         schema: {
           type: 'array',
           items: {

@@ -13,6 +13,14 @@ const apiDoc = {
           name: {
             description: 'User name',
             type: 'string'
+          },
+          lastName: {
+            description: 'Last name of the user',
+            type: 'string'
+          },
+          id: {
+            description: 'User id',
+            type: 'number'
           }
         },
         required: ['name']
